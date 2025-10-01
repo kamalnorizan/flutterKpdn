@@ -4,8 +4,24 @@ void main() {
   runApp(const MainApp());
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
   const MainApp({super.key});
+
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  int _currentIndex = 0;
+  PageController _pageController = PageController();
+
+  // Sample image URLs - you can replace these with your own images
+  final List<String> _images = [
+    'https://via.placeholder.com/400x200/4CAF50/FFFFFF?text=Image+1',
+    'https://via.placeholder.com/400x200/2E7D32/FFFFFF?text=Image+2',
+    'https://via.placeholder.com/400x200/66BB6A/FFFFFF?text=Image+3',
+    'https://via.placeholder.com/400x200/388E3C/FFFFFF?text=Image+4',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -82,13 +98,87 @@ class MainApp extends StatelessWidget {
               ),
               Container(
                 color: Colors.green,
-                height: 100,
+                height: 200,
                 width: double.infinity,
-                child: Center(
-                  child: Text(
-                    'Header',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Header',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: PageView.builder(
+                        controller: _pageController,
+                        onPageChanged: (index) {
+                          setState(() {
+                            _currentIndex = index;
+                          });
+                        },
+                        itemCount: _images.length,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            margin: EdgeInsets.symmetric(horizontal: 8.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black26,
+                                  blurRadius: 5.0,
+                                  offset: Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10.0),
+                              child: Image.network(
+                                _images[index],
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Container(
+                                    color: Colors.grey[300],
+                                    child: Center(
+                                      child: Icon(
+                                        Icons.image_not_supported,
+                                        color: Colors.grey[600],
+                                        size: 50,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    // Dot indicators
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: _images.asMap().entries.map((entry) {
+                          return Container(
+                            width: 8.0,
+                            height: 8.0,
+                            margin: EdgeInsets.symmetric(horizontal: 4.0),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: _currentIndex == entry.key
+                                  ? Colors.white
+                                  : Colors.white54,
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                  ],
                 ),
               ),
 
