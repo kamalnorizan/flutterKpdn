@@ -23,11 +23,34 @@ class MainApp extends StatelessWidget {
                 color: Colors.blue,
                 height: 100,
                 width: double.infinity,
-                child: Center(
-                  child: Text(
-                    'Header',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Icon(Icons.home, color: Colors.white, size: 60),
+                    SizedBox(width: 20),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Selamat Datang',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          Text(
+                            'Pengguna',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Icon(
+                      Icons.notification_important,
+                      color: Colors.white,
+                      size: 50,
+                    ),
+                  ],
                 ),
               ),
               Container(
