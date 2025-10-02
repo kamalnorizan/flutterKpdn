@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mykpdn/ecoss.dart';
 
 class NewPage extends StatefulWidget {
   const NewPage({super.key});
@@ -35,6 +36,15 @@ class _NewPageState extends State<NewPage> {
                 print(counter);
               },
               child: Text('Decrement Counter'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EcossPage()),
+                );
+              },
+              child: Text('ECoss'),
             ),
           ],
         ),

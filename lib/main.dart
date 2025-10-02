@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mykpdn/ecoss.dart';
 import 'package:mykpdn/newpage.dart';
 
 void main() {
-  runApp(const NewPage());
+  runApp(const MainApp());
 }
 
 class MainApp extends StatefulWidget {
@@ -138,21 +139,31 @@ class _MainAppState extends State<MainApp> {
                             ),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10.0),
-                              child: Image.network(
-                                _images[index],
-                                fit: BoxFit.cover,
-                                errorBuilder: (context, error, stackTrace) {
-                                  return Container(
-                                    color: Colors.grey[300],
-                                    child: Center(
-                                      child: Icon(
-                                        Icons.image_not_supported,
-                                        color: Colors.grey[600],
-                                        size: 50,
-                                      ),
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => EcossPage(),
                                     ),
                                   );
                                 },
+                                child: Image.network(
+                                  _images[index],
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Container(
+                                      color: Colors.grey[300],
+                                      child: Center(
+                                        child: Icon(
+                                          Icons.image_not_supported,
+                                          color: Colors.grey[600],
+                                          size: 50,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
                               ),
                             ),
                           );
