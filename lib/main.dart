@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mykpdn/newpage.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const NewPage());
 }
 
 class MainApp extends StatefulWidget {
@@ -17,10 +18,10 @@ class _MainAppState extends State<MainApp> {
 
   // Sample image URLs - you can replace these with your own images
   final List<String> _images = [
-    'https://via.placeholder.com/400x200/4CAF50/FFFFFF?text=Image+1',
-    'https://via.placeholder.com/400x200/2E7D32/FFFFFF?text=Image+2',
-    'https://via.placeholder.com/400x200/66BB6A/FFFFFF?text=Image+3',
-    'https://via.placeholder.com/400x200/388E3C/FFFFFF?text=Image+4',
+    'https://myharga.kpdn.gov.my/myharga/mobile/apps/1.png',
+    'https://myharga.kpdn.gov.my/myharga/mobile/apps/2.png',
+    'https://myharga.kpdn.gov.my/myharga/mobile/apps/1109.png',
+    'https://myharga.kpdn.gov.my/myharga/mobile/apps/113.png',
   ];
 
   @override
