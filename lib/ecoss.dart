@@ -68,8 +68,8 @@ class _EcossPageState extends State<EcossPage> {
                           Center(
                             child: Image.asset(
                               'assets/scan_qr.png',
-                              width: 60,
-                              height: 60,
+                              width: 50,
+                              height: 50,
                             ),
                           ),
                           Text('Sejarah Pembelian'),
@@ -92,8 +92,8 @@ class _EcossPageState extends State<EcossPage> {
                           Center(
                             child: Image.asset(
                               'assets/transaction_history.png',
-                              width: 60,
-                              height: 60,
+                              width: 50,
+                              height: 50,
                             ),
                           ),
                           Text('Sejarah Pembelian'),
